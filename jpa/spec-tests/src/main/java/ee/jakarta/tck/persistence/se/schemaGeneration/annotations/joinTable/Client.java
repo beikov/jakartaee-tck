@@ -160,13 +160,15 @@ public class Client extends PMClientBase {
 		pass1c = findDataInFile(f1, expected);
 
 		expected.clear();
-		expected.add("ALTER TABLE SCHEMAGEN_COURSE_STUDENT ADD");
+		expected.add("ALTER TABLE");
+		expected.add("SCHEMAGEN_COURSE_STUDENT ADD");
 		expected.add("CONSTRAINT STUDENTIDCONSTRAINT");
 		expected.add("SCHEMAGENSTUDENT");
 		pass1d = findDataInFile(f1, expected);
 
 		expected.clear();
-		expected.add("ALTER TABLE SCHEMAGEN_COURSE_STUDENT ADD");
+		expected.add("ALTER TABLE");
+		expected.add("SCHEMAGEN_COURSE_STUDENT ADD");
 		expected.add("CONSTRAINT COURSEIDCONSTRAINT");
 		expected.add("SCHEMAGENCOURSE");
 		pass1e = findDataInFile(f1, expected);
@@ -186,20 +188,33 @@ public class Client extends PMClientBase {
 		pass2a = findDataInFile(f2, new LinkedList<String>() {
 			private static final long serialVersionUID = 22L;
 			{
-				add("ALTER TABLE SCHEMAGEN_COURSE_STUDENT DROP");
+				add("ALTER TABLE");
+				add("SCHEMAGEN_COURSE_STUDENT DROP");
 				add("STUDENTIDCONSTRAINT");
 			}
 		});
 		pass2b = findDataInFile(f2, new LinkedList<String>() {
 			private static final long serialVersionUID = 22L;
 			{
-				add("ALTER TABLE SCHEMAGEN_COURSE_STUDENT DROP");
+				add("ALTER TABLE");
+				add("SCHEMAGEN_COURSE_STUDENT DROP");
 				add("COURSEIDCONSTRAINT");
 			}
 		});
-		pass2c = findDataInFile(f2, "DROP TABLE SCHEMAGEN_COURSE_STUDENT");
-		pass2d = findDataInFile(f2, "DROP TABLE SCHEMAGENCOURSE");
-		pass2e = findDataInFile(f2, "DROP TABLE SCHEMAGENSTUDENT");
+		expected.clear();
+		expected.add("DROP TABLE");
+		expected.add("SCHEMAGEN_COURSE_STUDENT");
+		pass2c = findDataInFile(f2, expected);
+
+		expected.clear();
+		expected.add("DROP TABLE");
+		expected.add("SCHEMAGENCOURSE");
+		pass2d = findDataInFile(f2, expected);
+
+		expected.clear();
+		expected.add("DROP TABLE");
+		expected.add("SCHEMAGENSTUDENT");
+		pass2e = findDataInFile(f2, expected);
 
 		logger.log(Logger.Level.TRACE, "Execute the create script");
 		props = getPersistenceUnitProperties();

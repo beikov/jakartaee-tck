@@ -131,7 +131,10 @@ public class Client extends PMClientBase {
 		// CREATE TABLE SCHEMAGENSIMPLE (ID INTEGER NOT NULL, PRODUCT_TYPE
 		// VARCHAR(31), PRIMARY KEY (ID))
 
-		pass2 = findDataInFile(f2, "DROP TABLE SCHEMAGENSIMPLE");
+		expected.clear();
+		expected.add("DROP TABLE");
+		expected.add("SCHEMAGENSIMPLE");
+		pass2 = findDataInFile(f2, expected);
 
 		logger.log(Logger.Level.TRACE, "Execute the create script");
 		props = getPersistenceUnitProperties();

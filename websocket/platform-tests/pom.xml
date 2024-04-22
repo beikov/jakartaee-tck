@@ -26,6 +26,14 @@
     </parent>
     <artifactId>websocket-tck-platform-tests</artifactId>
     <packaging>jar</packaging>
+
+    <repositories>
+        <repository>
+            <id>repo2</id>
+            <name>staging repo</name>
+            <url>https://jakarta.oss.sonatype.org/content/repositories/staging</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>

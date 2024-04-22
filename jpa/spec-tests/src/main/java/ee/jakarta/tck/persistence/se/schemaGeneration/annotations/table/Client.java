@@ -18,6 +18,8 @@ package ee.jakarta.tck.persistence.se.schemaGeneration.annotations.table;
 
 import java.io.File;
 import java.lang.System.Logger;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
@@ -122,7 +124,11 @@ public class Client extends PMClientBase {
 		logger.log(Logger.Level.INFO, "Check script(s) content");
 
 		pass1 = findDataInFile(f1, "CREATE TABLE SCHEMAGENSIMPLE");
-		pass2 = findDataInFile(f2, "DROP TABLE SCHEMAGENSIMPLE");
+
+		List<String> expected = new ArrayList<String>();
+		expected.add("DROP TABLE");
+		expected.add("SCHEMAGENSIMPLE");
+		pass2 = findDataInFile(f2, expected);
 
 		logger.log(Logger.Level.TRACE, "Execute the create script");
 		props = getPersistenceUnitProperties();

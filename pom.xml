@@ -33,6 +33,14 @@
     <name>project</name>
     <description>project</description>
 
+    <repositories>
+        <repository>
+            <id>repo2</id>
+            <name>staging repo</name>
+            <url>https://jakarta.oss.sonatype.org/content/repositories/staging</url>
+        </repository>
+    </repositories>
+
     <modules>
         <module>appclient</module>
         <module>assembly</module>
@@ -913,5 +921,4 @@
             </build>
         </profile>
     </profiles>
-
 </project>
